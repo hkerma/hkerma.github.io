@@ -7,7 +7,7 @@ $(document).ready(function(){
 	var ctx=q.getContext('2d');
 
 	var draw = function () {
-	  ctx.fillStyle='rgba(0,0,0,.05)';
+	  ctx.fillStyle='rgba(0,0,0,0.06)';
 	  ctx.fillRect(0,0,width,height);
 	  ctx.fillStyle='#0F0';
 	  ctx.font = '10pt Georgia';
@@ -15,7 +15,8 @@ $(document).ready(function(){
 		text = String.fromCharCode(1e2+Math.random()*33);
 		x = (index * 10)+10;
 		q.getContext('2d').fillText(text, x, y);
-		if(y > 100 + Math.random()*1e6)
+		console.log(height);
+		if(y > 1000 + Math.random()*2e5)
 		{
 		  yPositions[index]=0;
 		}
