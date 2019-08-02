@@ -2,18 +2,20 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title> Hugo Kermabon-Bobinnec </title>
+		<title> Hugo Kermabon</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		
 		<!-- css -->
 		<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-		<link rel="stylesheet" href="css/style.css">		
+		<link rel="stylesheet" href="css/style.css">
+		
 	</head>
 	
 	<body id="home">
+		<canvas id="q">Canvas not supported</canvas>
+		<!-- Nav mostly inspire by StartBootstrap.com's "scrolling-nav" -->
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
 		  <div class="container-fluid">
-			<a class="navbar-brand js-scroll-trigger" href="#home">Hugo KERMABON-BOBINNEC</a>
+			<a class="navbar-brand js-scroll-trigger" href="#home">Hugo KERMABON</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>	
@@ -23,13 +25,15 @@
 				  <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#formation">Ma formation</a></li>
 				  <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experiences">Mes expériences</a></li>
 				  <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#competences">Mes compétences</a></li>
+				  <li style="display: flex; align-items: center;"><button class="toggleButton pause"><img src="images/pause.png" width="30" height="30" alt="pause/play"/></button></li>
+				  <li style="display: flex; align-items: center;"><button class="toggleButton play"><img src="images/play.png" width="30" height="30" alt="pause/play"/></button></li>
 				</ul>
 			</div>
 		  </div>
-		</nav>	
+		</nav>
 		
 		<section id="about">
-			<div class="container grey">				
+			<div class="container grey">		
 			</div>
 		</section>	
 			
@@ -52,10 +56,11 @@
 		</footer>
 		
 		<!-- JavaScript -->
-		<script src="jquery/jquery.min.js"></script>
 		<script src="bootstrap/js/bootstrap.bundle.min.js"></script>	
 		<script src="jquery/jquery.easing.min.js"></script>
+		<script src="jquery/jquery.min.js"></script>
 		<script src="js/scrolling-nav.js"></script>
+		<!-- <script src="js/matrix.js"></script> <!-- matrix effect by Arunkumar Guddeli -->
 			
 	</body>
 </html>
