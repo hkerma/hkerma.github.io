@@ -1,9 +1,13 @@
 .grey {
 	background-color: grey;
-	height: 900px;
+	height: calc(100vh - 55px);
 }
 
 .red {
 	background-color: red;
-	height: 900px;
+	height: calc(100vh - 55px);
+}
+
+body {
+	padding-top: 55px;
 }
