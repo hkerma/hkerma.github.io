@@ -1,23 +1,15 @@
 .grey {
-	background-color: grey;
+	background-color: rgba(0,0,0,0.9);
 	height: calc(100vh - 55px);
-}
-
-.red {
-	background-color: red;
-	height: calc(100vh - 55px);
-}
-
-body {
-	
 }
 
 html {
-	height: 100%; width:100%
+	height: 100%; width:100%;
 } 
 
 body {
 	padding-top: 55px;
+	background-color: black;
 }
 
 canvas {
@@ -30,4 +22,14 @@ canvas {
 .toggleButton {
   background: transparent;
   border: none;
+}
+
+.helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.rounded-img {
+	border-radius: 50%;
 }

@@ -7,7 +7,7 @@ $(document).ready(function(){
 	var ctx=q.getContext('2d');
 
 	var draw = function () {
-	  ctx.fillStyle='rgba(0,0,0,0.06)';
+	  ctx.fillStyle='rgba(0,0,0,0.08)';
 	  ctx.fillRect(0,0,width,height);
 	  ctx.fillStyle='#0F0';
 	  ctx.font = '10pt Georgia';
@@ -15,7 +15,6 @@ $(document).ready(function(){
 		text = String.fromCharCode(1e2+Math.random()*33);
 		x = (index * 10)+10;
 		q.getContext('2d').fillText(text, x, y);
-		console.log(height);
 		if(y > 1000 + Math.random()*2e5)
 		{
 		  yPositions[index]=0;
@@ -52,5 +51,16 @@ $(document).ready(function(){
 		$(this).toggleClass("play pause");
 	});
 	
+	$(window).resize(function(){
+		console.log("yeah boy");
+		var width = q.width = $(document).width();
+		var height = q.height = $(document).height();
+		ctx.fillStyle='rgba(0,0,0,0.06)';
+		ctx.fillRect(0,0,width,height);
+		ctx.fillStyle='#0F0';
+	});
+
+	
 
 })
+
