@@ -1,5 +1,5 @@
 .grey {
-	background-color: rgba(0,0,0,0.9);
+	background-color: rgba(15,15,15,0.9);
 	height: calc(100vh - 55px);
 }
 
@@ -9,7 +9,9 @@ html {
 
 body {
 	padding-top: 55px;
-	background-color: black;
+	/*background-color: black;*/
+	background-image: url("../images/prism.png");
+	background-repeat: repeat;
 }
 
 canvas {
@@ -24,12 +26,29 @@ canvas {
   border: none;
 }
 
+.zoom {
+  transition: transform .2s;
+}
+
+.zoom:hover {
+  transform: scale(1.2);
+}
+
 .helper {
     display: inline-block;
     height: 100%;
     vertical-align: middle;
 }
 
+.vertical-align {
+	display: flex;
+	align-items: center;
+}
+
 .rounded-img {
 	border-radius: 50%;
+}
+
+.center {
+	margin: 0 auto;
 }

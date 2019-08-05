@@ -53,8 +53,8 @@ $(document).ready(function(){
 	
 	$(window).resize(function(){
 		console.log("yeah boy");
-		var width = q.width = $(document).width();
-		var height = q.height = $(document).height();
+		width = q.width = $(document).width();
+		height = q.height = $(document).height();
 		ctx.fillStyle='rgba(0,0,0,0.06)';
 		ctx.fillRect(0,0,width,height);
 		ctx.fillStyle='#0F0';
