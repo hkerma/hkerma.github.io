@@ -3,13 +3,17 @@
 	height: calc(100vh - 55px);
 }
 
+.red {
+	background-color: red;
+	height: calc(100vh - 55px);
+}
+
 html {
 	height: 100%; width:100%;
 } 
 
 body {
 	padding-top: 55px;
-	/*background-color: black;*/
 	background-image: url("../images/prism.png");
 	background-repeat: repeat;
 }
@@ -45,10 +49,19 @@ canvas {
 	align-items: center;
 }
 
+.top-align {
+	display: flex;
+	align-items: top;
+}
+
 .rounded-img {
 	border-radius: 50%;
 }
 
 .center {
 	margin: 0 auto;
+}
+
+ul.dropdown-menu.UlLanguageMenu{
+    min-width: auto;
 }

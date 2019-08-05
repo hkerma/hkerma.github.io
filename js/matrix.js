@@ -30,13 +30,13 @@ $(document).ready(function(){
 
 	function RunMatrix()
 	{
-	if(typeof Game_Interval != "undefined") clearInterval(Game_Interval);
-		Game_Interval = setInterval(draw, 33);
+		if(typeof Game_Interval != "undefined") clearInterval(Game_Interval);
+			Game_Interval = setInterval(draw, 33);
 	}
 
 	function StopMatrix()
 	{
-	clearInterval(Game_Interval);
+		clearInterval(Game_Interval);
 	}
 
 
@@ -52,7 +52,6 @@ $(document).ready(function(){
 	});
 	
 	$(window).resize(function(){
-		console.log("yeah boy");
 		width = q.width = $(document).width();
 		height = q.height = $(document).height();
 		ctx.fillStyle='rgba(0,0,0,0.06)';

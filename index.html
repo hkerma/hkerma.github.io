@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
 		<meta charset="utf-8">
 		<title> Hugo Kermabon</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!-- css -->
-		<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+		<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="css/style.css">
 		
 	</head>
@@ -14,29 +14,37 @@
 		<!-- <canvas id="q">Canvas not supported</canvas> -->
 		<!-- Nav mostly inspire by StartBootstrap.com's "scrolling-nav" -->
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-		  <div class="container-fluid">
-			<a class="navbar-brand js-scroll-trigger" href="#home">Hugo KERMABON</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="true" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>	
-			<div class="collapse navbar-collapse" id="navbarResponsive">
-				<ul class="navbar-nav ml-auto">
-				  <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">À propos de moi</a></li>
-				  <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#formation">Ma formation</a></li>
-				  <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experiences">Mes expériences</a></li>
-				  <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#competences">Mes compétences</a></li>
-				  <li style="display: flex; align-items: center;"><button class="toggleButton pause"><img src="images/pause.png" width="30" height="30" alt="pause/play"/></button></li>
-				  <li style="display: flex; align-items: center;"><button class="toggleButton play"><img src="images/play.png" width="30" height="30" alt="pause/play"/></button></li>
-				</ul>
+			<div class="container-fluid">
+				<a class="navbar-brand js-scroll-trigger" href="#home">Hugo KERMABON</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>	
+				<div class="collapse navbar-collapse" id="navbarResponsive">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">À propos de moi</a></li>
+						<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#formation">Ma formation</a></li>
+						<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experiences">Mes expériences</a></li>
+						<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#competences">Mes compétences</a></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+								<img src="images/fr.png" height=32px/>
+								<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu UlLanguageMenu" role="menu">
+								<li role="presentation"><a href="#" class="language" rel="fr-FR"><img src="images/fr.png" height=32px alt="Français (FR)" /></a></li>
+								<li role="presentation"><a href="#" class="language" rel="en-UK"><img src="images/en.png" height=32px alt="English (UK)" /></a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
 			</div>
-		  </div>
 		</nav>
 		
 		<section id="about">
 			<div class="container grey">
 				<div class="row h-100 vertical-align">
 					<div class="col-md-6 text-center">
-						<img class="img-fluid w-50 rounded-img" src="images/me.jpg"/>
+						<img class="img-fluid w-50 rounded-img" alt="My profile picture" src="images/me.jpg"/>
 						<div class="center row w-50" style="margin-top: 25px;">
 							<div class="col-md-4">
 								<a href="https://www.linkedin.com/in/hugo-kermabon-4b694116a" target="_blank"><img src="images/linkedin.png" alt="LinkedIn profile" class="rounded-img zoom" height="40px"/></a>
@@ -49,15 +57,24 @@
 							</div>
 						</div>				
 					</div>
-					<div class="col-md-6 text-center">
-					
+					<div class="col-md-6 h-100">
+						<div class="row">
+							<h2 style="color: #EEE; padding: 30px 0px 0px 30px; font-size: 400%;">Enchanté !</h2>
+						</div>
+						<div class="row" style="color: #AAA; padding: 20px 0px 0px 30px; font-size: 200%;">
+							<p>Je suis</p>
+							<p>  &nbsp; </p>
+							<p style="color: #0066ff">Hugo Kermabon</p>
+							<p>.</p>
+						</div>
+						
 					</div>
 				</div>
 			</div>
 		</section>	
 			
 		<section id="formation">
-			<div class="container grey">
+			<div class="container red">
 			</div>
 		</section>
 		
@@ -67,19 +84,24 @@
 		</section>
 		
 		<section id="competences">
-			<div class="container grey">
+			<div class="container red">
 			</div>
 		</section>
 		
 		<footer>
 		</footer>
 		
-		<!-- JavaScript order is important -->
-		<script src="bootstrap/js/bootstrap.bundle.min.js"></script>	
-		<script src="jquery/jquery.min.js"></script>
-		<script src="jquery/jquery.easing.min.js"></script>
+		<!-- Bootstrap core JavaScript -->
+		<script src="vendor/jquery/jquery.min.js"></script>
+		<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+		<!-- Plugin JavaScript -->
+		<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+		<!-- Custom JavaScript for this theme -->
 		<script src="js/scrolling-nav.js"></script>
-		<script src="js/matrix.js"></script> <!-- matrix effect by Arunkumar Guddeli -->
+		
+		<!-- <script src="js/matrix.js"></script> <!- - matrix effect by Arunkumar Guddeli - -> -->
 		<script src="js/resizing.js"></script>
 	</body>
 </html>
