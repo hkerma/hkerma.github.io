@@ -62,6 +62,16 @@ canvas {
 	margin: 0 auto;
 }
 
-ul.dropdown-menu.UlLanguageMenu{
-    min-width: auto;
+.language-list {
+	min-width: auto;
+	padding: 10px;
+}
+
+.language-list-img {
+	margin-right: 10px;
+}
+
+.language-list-link {
+    color: #AAA;
+    text-decoration: none;
 }
