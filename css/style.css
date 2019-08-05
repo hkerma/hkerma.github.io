@@ -1,5 +1,10 @@
 .grey {
-	background-color: rgba(0,0,0,0.9);
+	background-color: rgba(15,15,15,0.9);
+	height: calc(100vh - 55px);
+}
+
+.red {
+	background-color: red;
 	height: calc(100vh - 55px);
 }
 
@@ -9,7 +14,8 @@ html {
 
 body {
 	padding-top: 55px;
-	background-color: black;
+	background-image: url("../images/prism.png");
+	background-repeat: repeat;
 }
 
 canvas {
@@ -24,12 +30,48 @@ canvas {
   border: none;
 }
 
+.zoom {
+  transition: transform .2s;
+}
+
+.zoom:hover {
+  transform: scale(1.2);
+}
+
 .helper {
     display: inline-block;
     height: 100%;
     vertical-align: middle;
 }
 
+.vertical-align {
+	display: flex;
+	align-items: center;
+}
+
+.top-align {
+	display: flex;
+	align-items: top;
+}
+
 .rounded-img {
 	border-radius: 50%;
+}
+
+.center {
+	margin: 0 auto;
+}
+
+.language-list {
+	min-width: auto;
+	padding: 10px;
+}
+
+.language-list-img {
+	margin-right: 10px;
+}
+
+.language-list-link {
+    color: #AAA;
+    text-decoration: none;
 }
