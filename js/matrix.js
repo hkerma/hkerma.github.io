@@ -1,3 +1,4 @@
+/* Awesome Matrix effect by Arunkumar Guddeli */
 $(document).ready(function(){
 	
 	var s = window.screen;
@@ -7,7 +8,7 @@ $(document).ready(function(){
 	var ctx=q.getContext('2d');
 
 	var draw = function () {
-	  ctx.fillStyle='rgba(0,0,0,0.08)';
+	  ctx.fillStyle='rgba(0,0,0,0.15)';
 	  ctx.fillRect(0,0,width,height);
 	  ctx.fillStyle='#0F0';
 	  ctx.font = '10pt Georgia';
@@ -31,7 +32,7 @@ $(document).ready(function(){
 	function RunMatrix()
 	{
 		if(typeof Game_Interval != "undefined") clearInterval(Game_Interval);
-			Game_Interval = setInterval(draw, 33);
+			Game_Interval = setInterval(draw, 40);
 	}
 
 	function StopMatrix()
@@ -54,7 +55,7 @@ $(document).ready(function(){
 	$(window).resize(function(){
 		width = q.width = $(document).width();
 		height = q.height = $(document).height();
-		ctx.fillStyle='rgba(0,0,0,0.06)';
+		ctx.fillStyle='rgba(0,0,0,0.15)';
 		ctx.fillRect(0,0,width,height);
 		ctx.fillStyle='#0F0';
 	});
