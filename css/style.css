@@ -149,3 +149,7 @@ a:hover { color: #EEE; } /* CSS link hover (green) */
 #q {
 	width: 100%;
 }
+
+.btn-white {
+	background-color: #FFF;
+}
