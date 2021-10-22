@@ -1,25 +1,170 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 	<head>
 		<meta charset="utf-8">
 		<title>Hugo Kermabon</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- css -->
 		<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="css/style.css">
+		
 	</head>
-	<body style="background-color: #222;">
-		<div class="container">
-			<div class="row vertical-align h-100" style="padding-top: 20px;">
-				<div class="col-md-2"></div>
-				<div class="col-md-4 text-center">
-					<a href="en/index.html"><img style="padding: 20px;" src="images/en256.png" alt="English version" class="rounded-img zoom"/></a>
+	
+	<body id="home">
+		<canvas id="q">Canvas not supported</canvas>
+		<!-- Nav mostly inspire by StartBootstrap.com's "scrolling-nav" -->
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+			<div class="container-fluid">
+				<a class="navbar-brand js-scroll-trigger" href="#home">Hugo KERMABON</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>	
+				<div class="collapse navbar-collapse" id="navbarResponsive">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About me</a></li>
+						<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#formation">Education</a></li>
+						<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experiences">Experiences</a></li>
+						<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#competences">Skills</a></li>
+						<li style="display: flex; align-items: center;"><button class="toggleButton pause"><img src="images/pause.png" width="30" height="30" alt="pause/play"/></button></li>
+						<li style="display: flex; align-items: center;"><button class="toggleButton play"><img src="images/play.png" width="30" height="30" alt="pause/play"/></button></li>
+						<li class="dropdown" style="display: flex; align-items: center; padding-left: 10px;">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+								<img src="images/fr.png" alt="language change button" height=25px/>
+								<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu dropdown-menu-right bg-dark" role="menu">
+								<li class="language-list" role="presentation"><a href="fr/index.html" class="language language-list-link" rel="fr-FR"><img class="language-list-img" src="images/fr.png" height=25px alt="Français (FR)" />Français</a></li>
+								<li class="language-list" role="presentation"><a href="#" class="language language-list-link" rel="en-UK"><img class="language-list-img" src="images/en.png" height=25px alt="English (UK)" />English</a></li>
+							</ul>
+						</li>
+					</ul>
 				</div>
-				<div class="col-md-4 text-center">
-					<a href="fr/index.html"><img style="padding: 20px;" src="images/fr256.png" alt="Version française" class="rounded-img zoom"/></a>
-				</div>
-				<div class="col-md-2"></div>
 			</div>
-		</div>
+		</nav>
+		
+		<section id="about">
+			<div class="container page">
+				<div class="row h-100 vertical-align">
+					<div class="col-md-6 text-center">
+						<img class="img-fluid w-75 rounded-img" alt="My profile picture" src="images/me.jpg"/>
+						<div class="center row w-75" style="margin-top: 25px;">
+							<div class="col-md-4">
+								<a href="https://www.linkedin.com/in/hugo-kermabon-4b694116a" target="_blank"><img style="padding: 5px;" src="images/linkedin.png" alt="LinkedIn profile" class="rounded-img zoom" height="40px"/></a>
+							</div>
+							<div class="col-md-4">
+								<a href="https://github.com/hkerma" target="_blank"><img style="padding: 5px;" src="images/github.png" alt="GitHub profile" class="rounded-img zoom" height="40px"/></a>
+							</div>
+							<div class="col-md-4">
+								<a href="mailto:hugo.kermabon@gmail.com" target="_blank"><img style="padding: 5px;" src="images/mail.png" alt="Mailing" class="rounded-img zoom" height="40px"/></a>
+							</div>
+						</div>				
+					</div>
+					<div class="col-md-6 h-100">
+						<div class="row">
+							<h2 style="color: #EEE; padding: 30px 0px 0px 20px; font-size: 400%;">Welcome !</h2>
+						</div>
+						<div class="row" style="color: #AAA; padding: 20px 20px 0px 20px; font-size: 200%;">
+							<p>I am</p>
+							<p>  &nbsp; </p>
+							<p style="color: #0066ff">Hugo Kermabon</p>
+							<p>.</p>
+						</div>
+						<div style="color: #AAA; font-size:150%; padding: 0px 20px 0px 20px;" class="row">
+							<p> Curious. Passionate.</p>
+						</div>
+						<div style="color: #AAA; font-size:150%; padding: 0px 20px 0px 20px;" class="row">
+							<p> I am a&nbsp;</p><p style="color: #0066ff;">Fr</p> <p>en</p> <p style="color: #EF4135;">ch</p> <p>&nbsp;engineering student. </p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>	
+			
+		<section id="formation">
+			<div class="container page">
+				<h2 style="text-align: center; color: #EEE; padding: 20px 0px 20px 0px;">Education</h2>
+				<div class="container-fluid row">
+					<div class="col-md-8">
+						<h3><i>2018-2021</i><b>&nbsp;IMT Atlantique</b></h3>
+						<p>French "Grande École" public engineering school.</p>
+						<p>Speciality : electronics, embedded systems, computer sciences.</p>
+					</div>
+					<div class="col-md-4 vertical-align">
+						<img src="images/imt.jpg" alt="Logo IMT Atlantique" height=100px>
+					</div>
+				</div>
+				<div class="container-fluid row">
+					<div class="col-md-8">
+						<h3><i>2016-2018</i><b>&nbsp;Higher School Preparatory Classes</b></h3>
+						<p>Undergraduate studies to prepare for competitive entry exams to french Grandes Écoles.</p>
+						<p>Subject : mathematics, physics, engineer's sciences.</p>
+					</div>
+					<div class="col-md-4 vertical-align">
+					</div>
+				</div>
+				<div class="container-fluid row">
+					<div class="col-md-8">					
+						<h3><i>2016</i><b>&nbsp;French high school diploma</b></h3>
+						<p>Sciences diploma, with honours.</p>
+					</div>
+					<div class="col-md-4 vertical-align">
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<section id="experiences">
+			<div class="container page">
+				<h2 style="text-align: center; color: #EEE; padding: 20px 0px 20px 0px;">Education</h2>
+				<div class="container-fluid row">
+					<div class="col-md-8">
+						<h3><i>2018-2021</i><b>&nbsp;IMT Atlantique</b></h3>
+						<p>French "Grande École" public engineering school.</p>
+						<p>Speciality : electronics, embedded systems, computer sciences.</p>
+					</div>
+					<div class="col-md-4 vertical-align">
+						<img src="images/imt.jpg" alt="Logo IMT Atlantique" height=100px>
+					</div>
+				</div>
+				<div class="container-fluid row">
+					<div class="col-md-8">
+						<h3><i>2016-2018</i><b>&nbsp;Higher School Preparatory Classes</b></h3>
+						<p>Undergraduate studies to prepare for competitive entry exams to french Grandes Écoles.</p>
+						<p>Subject : mathematics, physics, engineer's sciences.</p>
+					</div>
+					<div class="col-md-4 vertical-align">
+					</div>
+				</div>
+				<div class="container-fluid row">
+					<div class="col-md-8">					
+						<h3><i>2016</i><b>&nbsp;French high school diploma</b></h3>
+						<p>Sciences diploma, with honours.</p>
+					</div>
+					<div class="col-md-4 vertical-align">
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<section id="competences">
+			<div class="container page">
+			</div>
+		</section>
+		
+		<footer>
+		</footer>
+		
+		<!-- Bootstrap core JavaScript -->
+		<script src="vendor/jquery/jquery.min.js"></script>
+		<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+		<!-- Plugin JavaScript -->
+		<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+
+		<!-- Custom JavaScript for this theme -->
+		<script src="js/scrolling-nav.js"></script>
+		<script src="js/resizing.js"></script>
+		<script src="js/matrix.js"></script> <!- - matrix effect by Arunkumar Guddeli - ->
 	</body>
 </html>
-
