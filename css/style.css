@@ -1,17 +1,19 @@
 .page {
-	background-color: rgba(0,0,0,0.9);
-	height: calc(100vh - 55px);
+	background-color: rgba(20,20,20,0.5);
+	/*height: calc(100vh - 55px);*/
 }
 
 html {
 	height: 100%;
 	width:100%;
 	scrollbar-width: thin;
-	scrollbar-color: #0F0 #222;
+	scrollbar-color: #06F #222;
 } 
 
 body {
 	padding-top: 55px;
+	background-image: url("../images/prism.png");
+  background-repeat: repeat;
 }
 
 canvas {
@@ -21,10 +23,8 @@ canvas {
 	top: 0;
 }
 
-.toggleButton {
-  background: transparent;
-  border: none;
-}
+a { color: #CCC; } /* CSS link color (red) */
+a:hover { color: #EEE; } /* CSS link hover (green) */
 
 .zoom {
   transition: transform .2s;
@@ -58,20 +58,6 @@ canvas {
 	margin: 0 auto;
 }
 
-.language-list {
-	min-width: auto;
-	padding: 10px;
-}
-
-.language-list-img {
-	margin-right: 10px;
-}
-
-.language-list-link {
-    color: #AAA;
-    text-decoration: none;
-}
-
 #formation h2 {
 	font-size: 3em;
 	color: #EEE
@@ -92,7 +78,61 @@ canvas {
 }
 
 #formation>div>div {
-	background-color: #2fb028;
+	background-color: #888;
+	width: 80%;
+	border-radius: 0px 30px 30px 0px;
+	padding: 10px;
+	margin-top: 10px;
+}
+
+#experiences h2 {
+	font-size: 3em;
+	color: #EEE
+}
+
+#experiences h3 {
+	font-size: 1.6em;
+	color: #EEE
+}
+
+#experiences p {
+	font-size: 1em;
+	font-weight: bold;
+	color: #111;
+}
+
+#experiences>div {
+}
+
+#experiences>div>div {
+	background-color: #888;
+	width: 80%;
+	border-radius: 0px 30px 30px 0px;
+	padding: 10px;
+	margin-top: 10px;
+}
+
+#hobbies h2 {
+	font-size: 3em;
+	color: #EEE
+}
+
+#hobbies h3 {
+	font-size: 1.6em;
+	color: #EEE
+}
+
+#hobbies p {
+	font-size: 1em;
+	font-weight: bold;
+	color: #111;
+}
+
+#hobbies>div {
+}
+
+#hobbies>div>div {
+	background-color: #888;
 	width: 80%;
 	border-radius: 0px 30px 30px 0px;
 	padding: 10px;
