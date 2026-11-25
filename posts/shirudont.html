@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shirudon’t? Surviving unpatched vulnerabilities and the hype around them</title>
+</head>
+<body style="margin:0; padding:0; background:#fdfdfc; color:#222; font-family:Georgia, 'Times New Roman', serif; font-size:18px; line-height:1.65;">
+<article style="max-width:680px; margin:0 auto; padding:56px 24px 80px;">
+
+<header style="margin-bottom:40px;">
+<h1 style="font-size:30px; line-height:1.25; font-weight:normal; margin:0 0 12px;">Shirudon’t? Surviving unpatched vulnerabilities and the hype around them</h1>
+<p style="margin:0; color:#777; font-size:15px; font-family:-apple-system, 'Helvetica Neue', Arial, sans-serif;">November 24, 2026</p>
+</header>
+
+<p style="margin:0 0 1.2em;">Research can be cruel. You spend years building your skills, your knowledge, you get a novel idea, you implement it and evaluate it. Then, right before you submit, you find out someone else published something addressing the same problem a few weeks earlier. It’s always been the game; sometimes you win and sometimes you don’t.</p>
+
+<p style="margin:0 0 1.2em;">One thing I always try to keep in mind is the end goal of my research: making itself useless. In an ideal world, I am useless: the OS is safe, the industry isn’t trying to gain a few microseconds for loading the latest memes (at the cost of introducing major vulnerabilities), and everything runs correctly and securely. In this ideal world, vulnerabilities don’t need patching, because they don’t exist, and I’m out of a job; I can go back to playing guitar.</p>
+
+<p style="margin:0 0 1.2em;">Today, I feel useless, not because we finally live in my ideal world, but because the work of careful, cautious researchers like myself is being drowned out by “AI-accelerated” projects that ship faster and shout louder.</p>
+
+<p style="margin:0 0 1.2em;">I work on “surviving unpatched vulnerabilities”. More than three years ago, my group and I became interested in the following problem: patching a vulnerability can take weeks, while exploitation can happen much sooner. Keep in mind that this was before the current wave of AI, and the gap was already obvious. So I built Phoenix <a href="#ref-1" style="color:#1f4e8c; text-decoration:none;">[1]</a>: it helps users identify the sequence of system calls an exploit relies on, and apply a temporary mitigation until the official patch is released and applied. Phoenix isn’t perfect. It can be racy, it needs a kernel module, and it is a research prototype. I built it without AI assistants, learning and writing everything myself. Still, projects like Phoenix have never been more relevant, because AI agents can accelerate the discovery and exploitation of vulnerabilities.</p>
+
+<p style="margin:0 0 1.2em;">Yesterday, Cisco and OpenAI announced Shirudo <a href="#ref-2" style="color:#1f4e8c; text-decoration:none;">[2]</a>, which targets a similar problem. So, obviously I browsed the code (with Claude’s help to find my way through thousands and thousands of LOC) and read its documentation. The people behind it are some of the most accomplished BPF developers in the kernel community, so my expectations were really high. That’s also why I am so disappointed by the gap between their claims and the reality.</p>
+
+<p style="margin:0 0 1.2em;"><strong>No restart needed? The headline demo doesn’t show what the headline says.</strong>The demo claims to block an exploit in Elasticsearch “without a restart” <a href="#ref-3" style="color:#1f4e8c; text-decoration:none;">[3]</a>. Shirudo’s documented signed Java-upatch mechanism, however, only configures agents for JVMs that start later, and its automatic environment configuration only reaches JVMs launched by a systemd user manager started after the shield is loaded <a href="#ref-4" style="color:#1f4e8c; text-decoration:none;">[4]</a>. The Java agent can also attach dynamically to an already-running JVM, but that path uses the standard Java Attach API: the code does not route it through Shirudo’s signed-upatch verification, nor record the attachment in its measurement register. The demo reports attaching to a running Elasticsearch process but does not explain how the JAR was delivered or verified. So, as far as the public material shows, the headline “no restart” result went through the one path that skips Shirudo’s own signing and measurement. Attaching a Java agent to a running JVM is something you could already do without Shirudo; making that step signed and measured is the whole point of the project. I know “no restart” is an important problem: most of Phoenix’s design was built around that constraint.</p>
+
+<p style="margin:0 0 1.2em;"><strong>Most of the shipped CVE shields watch rather than protect, and the ones that block are blunter than what already exists.</strong>Three of the five named kernel-CVE package definitions in the repository are detectors. The two others aim to block operations associated with Copy Fail (CVE-2026-31431) <a href="#ref-8" style="color:#1f4e8c; text-decoration:none;">[8]</a>. One refuses every new AF_ALG socket; the other refuses zero-copy splices into AF_ALG sockets, including legitimate ones. The latter leaves ordinary copying sends available, but neither distinguishes an attack from benign use. Disabling the affected algif_aead module is an existing, narrower mitigation when it is built as a module and can be removed; existing BPF LSM mitigations can also block the affected interface without a reboot.</p>
+
+<p style="margin:0 0 1.2em;"><strong>It can’t run on any kernel you have today.</strong>Shirudo requires a development kernel (bpf-next) with five extra patches, including new LSM and TPM hooks, plus TPM 2.0. That’s fine: it’s a work in progress! But getting these changes upstream will require kernel review, and BPF signing has already been the subject of debate <a href="#ref-5" style="color:#1f4e8c; text-decoration:none;">[5]</a>.</p>
+
+<p style="margin:0 0 1.2em;"><strong>Verified is not the same as protected.</strong>The announcement says shields can be verified “even if an attacker has gained administrator access” <a href="#ref-6" style="color:#1f4e8c; text-decoration:none;">[6]</a>. But verifying a shield is not the same as ensuring it remains active: the project’s own threat model says that root can apply a published and signed unload directive, or load older signed versions <a href="#ref-7" style="color:#1f4e8c; text-decoration:none;">[7]</a>.</p>
+
+<p style="margin:0 0 1.2em;"><strong>The fixes so far look like whack-a-mole.</strong>The code is moving very fast: GitHub shows about 1,800 commits <a href="#ref-2" style="color:#1f4e8c; text-decoration:none;">[2]</a>. The project also carries new kernel hooks to close ways around its protections. How much control do the developers actually have over the tool, its vision, the problem it solves? If every newly found way around a security mechanism requires another kernel hook, we call it “whack-a-mole”, and that’s not a good sign.</p>
+
+<p style="margin:0 0 1.2em;">Don’t get me wrong, this does not make Shirudo useless; I am sure it’s a promising prototype, and I will follow its development closely. But overselling a security tool is not harmless: it convinces people the problem is solved, and they stop looking. That is how vulnerabilities live on.</p>
+
+<p style="margin:0 0 1.2em;">When I started doing research, I was beaten by people smarter than me, and I could live with that. But now, it feels like volume and reach win over actual contributions. Whoever ships the most and announces the loudest sets the story, whether or not the problem is solved. I see the same pattern far beyond cybersecurity, in politics and in economics. In the end, I am very grateful for such projects to appear, especially when they are sponsored by major companies like Cisco: it gives me very strong material to cite in the “limitations of existing solutions” paragraph of my next paper.</p>
+
+<hr style="border:none; border-top:1px solid #ddd; margin:48px 0 24px;">
+
+<section style="font-size:14px; line-height:1.55; color:#555; font-family:-apple-system, 'Helvetica Neue', Arial, sans-serif;">
+<h2 style="font-size:14px; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; color:#777; margin:0 0 12px;">References</h2>
+<p id="ref-1" style="margin:0 0 8px; word-break:break-word;">[1] Phoenix: <a href="https://users.encs.concordia.ca/~h_kermab/publications/phoenix_preprint.pdf" style="color:#1f4e8c;">https://users.encs.concordia.ca/~h_kermab/publications/phoenix_preprint.pdf</a></p>
+<p id="ref-2" style="margin:0 0 8px; word-break:break-word;">[2] <a href="https://github.com/shirudo-dev/shirudo" style="color:#1f4e8c;">https://github.com/shirudo-dev/shirudo</a></p>
+<p id="ref-3" style="margin:0 0 8px; word-break:break-word;">[3] <a href="https://openai.com/index/introducing-shirudo/" style="color:#1f4e8c;">https://openai.com/index/introducing-shirudo/</a></p>
+<p id="ref-4" style="margin:0 0 8px; word-break:break-word;">[4] <a href="https://docs.shirudo.dev/upatches/write/java-agents.html" style="color:#1f4e8c;">https://docs.shirudo.dev/upatches/write/java-agents.html</a></p>
+<p id="ref-5" style="margin:0 0 8px; word-break:break-word;">[5] <a href="https://lwn.net/Articles/1017549/" style="color:#1f4e8c;">https://lwn.net/Articles/1017549/</a></p>
+<p id="ref-6" style="margin:0 0 8px; word-break:break-word;">[6] <a href="https://newsroom.cisco.com/c/r/newsroom/en/us/a/y2026/m11/cisco-and-openai-launch-shirudo-a-new-project-to-safeguard-agentic-ai.html" style="color:#1f4e8c;">https://newsroom.cisco.com/c/r/newsroom/en/us/a/y2026/m11/cisco-and-openai-launch-shirudo-a-new-project-to-safeguard-agentic-ai.html</a></p>
+<p id="ref-7" style="margin:0 0 8px; word-break:break-word;">[7] <a href="https://docs.shirudo.dev/security/threat-model.html" style="color:#1f4e8c;">https://docs.shirudo.dev/security/threat-model.html</a></p>
+<p id="ref-8" style="margin:0 0 8px; word-break:break-word;">[8] Copy Fail, CVE-2026-31431: <a href="https://copy.fail/" style="color:#1f4e8c;">https://copy.fail/</a></p>
+</section>
+
+</article>
+</body>
+</html>
